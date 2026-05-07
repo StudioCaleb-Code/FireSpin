@@ -1,0 +1,68 @@
+EMPRENDEMAS/
+|_ app/
+|   |_ config/
+|   |   |_ Config.php  # definir rutas globales
+|   |   |_ Database.php # conexion usando variables de .env
+|   |_ core/
+|   |   |_ Router.php
+|   |   |_ Model.php
+|   |   |_ Controller.php
+|   |   |_ View.php
+|   |_ models/
+|   |   |_ Usuario.php # model para login
+|   |   |_ Evento.php # model para pagina principal
+|   |_ controllers/
+|   |   |_ AuthController.php   # contralador para login
+|   |   |_ HomeController.php   # contralador para la pagina principal
+|   |   |_ panel/
+|   |   |   |_ ... # todos los controladores de admin
+|   |_ middleware/
+|   |   |_ AuthMiddleware.php
+|   |_ services/
+|   |_ views/
+|       |_ auth/
+|       |   |_ Login.php
+|       |_ panel/ # rol de admin y si hay mas solo seran con permiso
+|       |   |_ Panel.php # header mas otras cosas
+|       |   |_ dashboard/
+|       |   |   |_ index.php
+|       |   |_ usuario/
+|       |   |   |_ index.php
+|       |   |   |_ form.php
+|       |   |_ eventos/
+|       |   |_ ruleta/
+|       |   |_ ... # mas cositas que pueden ir
+|       |_ errors/
+|       |   |_ 404.php # errores personalizados
+|       |   |_ 500.php # errores personalizados
+|       |   |_ 405.php # errores personalizados
+|       |   |_ ... # mas errores personalizados
+|       |_ layouts/
+|       |   |_ panel/
+|       |   |   |_ header.php
+|       |   |   |_ sidebar.php
+|       |   |_ public/
+|       |       |_ header.php
+|       |       |_ footer.php
+|       |_ public/
+|           |_ sobreNostros.php # pagina aparte
+|           |_ home.php # esto se motrara al entrar a la pagina
+|_ assets/
+|   |_ css/
+|   |   |_ panel/
+|   |   |_ fonts/ # bootstrap
+|   |   |_ bootstrap-icons.css # bootstrap
+|   |_ js/
+|   |   |_ panel/
+|   |_ img/
+|
+|_ uploads/
+|   |_ premios/
+|   |_ foto/
+|   |_ portada/
+|   |_ galeria/
+|   |_ .htaccess # visible pero protegido
+|
+|_ index.php  # front controller
+|_ .htaccess 
+|_ .env  # datos de SQL y APIs externos como reniec 

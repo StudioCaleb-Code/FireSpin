@@ -1,0 +1,64 @@
+.seccionUsuario {
+  width: 100%;
+  /* padding: 10px; */
+
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  background: #ffff;
+  border-radius: 15px;
+  overflow-y: auto;
+}
+.MenuUsuario {
+  width: 100%;
+  display: flex;
+}
+.MenuUsBox {
+  width: 100%;
+  background: #fff;
+  padding: 20px;
+  border-radius: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+}
+.listaUsM {
+  list-style: none;
+}
+.linkUsM {
+  width: 150px;
+  width: 100%;
+  padding: 10px;
+  border-radius: 20px;
+  text-decoration: none;
+  color: #383838;
+}
+.linkUsM .bi-people {
+  color: #383838 !important;
+  background: transparent;
+}
+.linkUsM:hover {
+  background: #caff74;
+  color: #426c00;
+}
+
+/* taba de usuarios */
+.tablaUsuario {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  /* background: #ffff; */
+}
+
+/* tala ganadores */
+.tablaGanadores {
+  text-align: center;
+  width: 100%;
+  padding: 20px;
+  border-radius: 15px;
+  /* background: #ffff; */
+  overflow: auto;
+}
