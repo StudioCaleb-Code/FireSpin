@@ -5,8 +5,6 @@ class PerfilController extends PanelController
 {
     public function index()
     {
-        $this->renderPanel('Panel/Perfil/index', [
-            'titulo' => 'Mi Perfil'
-        ]);
+        $this->renderPanel('Panel/Perfil/index');
     }
 }

@@ -9,7 +9,6 @@ class UsuariosController extends PanelController
     public function index()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'titulo' => 'Gestión de Participantes',
             'extra_css' => ['panel/usuarios'],
             'extra_js' => ['panel/usuarios'],
             'view_tab' => 'TablaUsuario', // Carga TablaUsuario.php
@@ -23,7 +22,6 @@ class UsuariosController extends PanelController
     public function ganadores()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'titulo' => 'Lista de Ganadores',
             'extra_css' => ['panel/usuarios'],
             'extra_js' => ['panel/usuarios'],
             'view_tab' => 'TablaGanadores', // Carga TablaGanadores.php
@@ -37,7 +35,6 @@ class UsuariosController extends PanelController
     public function listaNegra()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'titulo' => 'Usuarios en Lista Negra',
             'extra_css' => ['panel/usuarios'],
             'extra_js' => ['panel/usuarios'],
             'view_tab' => 'TablaListaNegra', // Carga TablaListaNegra.php
@@ -51,7 +48,6 @@ class UsuariosController extends PanelController
     public function administrativos()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'titulo' => 'Personal Administrativo',
             'extra_css' => ['panel/usuarios'],
             'extra_js' => ['panel/usuarios'],
             'view_tab' => 'TablaAdministrativos', // Carga TablaAdministrativos.php

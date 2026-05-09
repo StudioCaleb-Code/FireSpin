@@ -8,16 +8,12 @@ class DashboardController extends PanelController
     // funcion para llamar al index
     public function index()
     {
-        $this->renderPanel('Panel/Dashboard/index', [
-            'titulo' => 'Inicio - FairSpin'
-        ]);
+        $this->renderPanel('Panel/Dashboard/index');
     }
 
     // funcion para entrar detalles 
     public function detalles()
     {
-        $this->renderPanel('Panel/Dashboard/detalles', [
-            'titulo' => 'Más información del Dashboard'
-        ]);
+        $this->renderPanel('Panel/Dashboard/detalles');
     }
 }

@@ -1,0 +1,239 @@
+.navEvento {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 14px 18px;
+  border-radius: 20px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.menuEvn {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.listaEvn {
+  list-style: none;
+}
+
+.linkEnv {
+  text-decoration: none;
+
+  color: #4b4b4b;
+
+  padding: 12px 18px;
+  border-radius: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+}
+
+.linkEnv i {
+  font-size: 18px;
+}
+
+.linkEnv:hover {
+  background: #99da1e;
+  color: #416400;
+}
+
+/* ========================================
+   CONTENEDOR
+======================================== */
+
+.seccionEvn {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 25px;
+  border-radius: 20px;
+
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+/* ========================================
+   LINK CARD
+======================================== */
+
+.linkCardEvn {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* ========================================
+   CARD
+======================================== */
+
+.cardEvn {
+  width: 330px;
+
+  background: #f8f8f8;
+
+  border-radius: 22px;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+
+  border: 1px solid #ebebeb;
+
+  transition: 0.35s ease;
+}
+
+.cardEvn:hover {
+  transform: translateY(-6px);
+
+  box-shadow: 0 14px 25px rgba(0, 0, 0, 0.12);
+}
+
+/* ========================================
+   FOTO
+======================================== */
+
+.fotoEvn {
+  width: 100%;
+  height: 220px;
+
+  overflow: hidden;
+}
+
+.fotoEvn img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: fill;
+
+  transition: 0.4s ease;
+}
+
+.cardEvn:hover img {
+  transform: scale(1.06);
+}
+
+/* ========================================
+   TEXTO
+======================================== */
+
+.tiDesEvn {
+  padding: 18px;
+
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.nombreEvn {
+  font-size: 22px;
+  font-weight: 700;
+
+  color: #1f1f1f;
+}
+
+.tiDesEvn p {
+  color: #5c5c5c;
+
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ========================================
+   BOTONES
+======================================== */
+
+.btnAccionEvn {
+  padding: 15px 18px;
+
+  border-top: 1px solid #e4e4e4;
+
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  gap: 10px;
+}
+
+.linkEditar,
+.linkEliminar {
+  width: 42px;
+  height: 42px;
+
+  border: none;
+  border-radius: 12px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  cursor: pointer;
+
+  font-size: 18px;
+
+  transition: 0.3s ease;
+}
+
+/* EDITAR */
+
+.linkEditar {
+  background: #99da1e;
+  color: #416400;
+
+  text-decoration: none;
+}
+
+.linkEditar:hover {
+  background: #83bf12;
+
+  transform: scale(1.05);
+}
+
+/* ELIMINAR */
+
+.linkEliminar {
+  background: #ff4d4d;
+  color: #ffffff;
+}
+
+.linkEliminar:hover {
+  background: #db3434;
+
+  transform: scale(1.05);
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .seccionEvn {
+    justify-content: center;
+  }
+
+  .cardEvn {
+    width: 100%;
+  }
+
+  .menuEvn {
+    gap: 10px;
+  }
+
+  .linkEnv {
+    width: 100%;
+    justify-content: center;
+  }
+}

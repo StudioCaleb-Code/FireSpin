@@ -1,0 +1,14 @@
+.infoEvn {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.infoEvn .regresarE {
+  width: 100%;
+  padding: 10px;
+  border-bottom: 1px solid #dcdcdc;
+
+  text-decoration: none;
+  color: #9c9c9c;
+}

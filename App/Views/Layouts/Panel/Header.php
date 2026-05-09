@@ -1,7 +1,7 @@
 <!-- <header class="header"> -->
 <button class="menu-toggle">
-    <i class="bi bi-chevron-left"></i>
-    <i class="bi bi-chevron-right"></i>
+    <!-- <i class="bi bi-chevron-left"></i> -->
+    <!-- <i class="bi bi-chevron-right"></i> -->
     <i class="bi bi-list"></i>
 </button>
 
