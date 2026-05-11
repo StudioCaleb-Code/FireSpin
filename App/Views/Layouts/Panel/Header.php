@@ -7,9 +7,10 @@
 
 <div class="perfilHeader">
     <!-- Enlace al perfil del usuario logueado -->
+    <span>TONY CALEB HUAMAN BORDA</span>
     <a href="<?= BASE_URL ?>/Panel/perfil" class="perfilLink">
+        <!-- <span style="font-size: 0.8rem; margin-left: 5px;"><?= htmlspecialchars($_SESSION['username']) ?></span> -->
         <i class="bi bi-person"></i>
-        <!-- <span style="font-size: 0.8rem; margin-left: 5px;"><?= $_SESSION['username'] ?></span> -->
     </a>
 
     <button type="button" class="theme" id="theme-toggle">

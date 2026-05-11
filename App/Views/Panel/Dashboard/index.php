@@ -1,8 +1,8 @@
 <div class="dashboard-content">
-    <div class="welcome-banner">
+    <!-- <div class="welcome-banner">
         <h1>Bienvenido, <?= htmlspecialchars($_SESSION['username']) ?> 👋</h1>
         <p>Este es el resumen de **EMPRENDEMAS** para hoy.</p>
-    </div>
+    </div> -->
 
     <div class="stats-grid"
         style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 20px; margin-top: 20px;">

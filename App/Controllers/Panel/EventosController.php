@@ -7,7 +7,7 @@ class EventosController extends PanelController
     {
         $this->renderPanel('Panel/Eventos/index', [
             'extra_css' => ['panel/eventos'],
-            'extra_js' => ['panel/eventos'],
+            'extra_js' => ['panel/eventoLink'],
             'view_tab' => 'CardEvento', 
             'Eventos' => [] 
         ]);
@@ -26,7 +26,7 @@ class EventosController extends PanelController
     // listar contenido del evento
     public function infoEvento()
     {
-        $this->renderPanel('Panel/Eventos/index', [
+        $this->renderPanel('Panel/Eventos/InfoEvento', [
             'extra_css' => [
                 'panel/eventos',
                 'panel/infoEvento'

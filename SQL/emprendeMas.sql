@@ -40,18 +40,44 @@ CREATE TABLE estados (
 ) ENGINE = InnoDB;
 
 -- =========================
+-- USUARIOS (DATOS)
+-- =========================
+CREATE TABLE datosU (
+    id_datosU INT AUTO_INCREMENT PRIMARY KEY,
+    dni CHAR(8) NOT NULL,
+    nombres VARCHAR(150) NOT NULL,
+    apellidos VARCHAR(150) NOT NULL,
+    telefono VARCHAR(15) NOT NULL
+);
+
+CREATE TABLE empresa (
+    id_empresa INT AUTO_INCREMENT PRIMARY KEY,
+    ruc CHAR(11) NOT NULL,
+    dni CHAR(8) NOT NULL,
+    nombre_empresa VARCHAR(255) NOT NULL,
+    dueno VARCHAR(255) NOT NULL,
+    encargado VARCHAR(255) NOT NULL,
+    direccion VARCHAR(255) NOT NULL,
+    logo_empresa VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+-- =========================
 -- USUARIOS (PANEL)
 -- =========================
 CREATE TABLE usuarios (
     id_usuario INT AUTO_INCREMENT PRIMARY KEY,
     id_rol INT NOT NULL,
+    id_datosU INT NOT NULL,
+    id_empresa INT NOT NULL,
     email VARCHAR(255) NOT NULL UNIQUE,
     username VARCHAR(150) NOT NULL UNIQUE,
     password VARCHAR(255) NOT NULL,
     id_estado INT,
     created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT fk_usuario_rol FOREIGN KEY (id_rol) REFERENCES roles (id_rol) ON UPDATE CASCADE,
-    CONSTRAINT fk_usuario_estado FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE
+    CONSTRAINT fk_usuario_estado FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON UPDATE CASCADE,
+    CONSTRAINT fk_usuario_datosU FOREIGN KEY (id_datosU) REFERENCES datosU (id_datosU) ON UPDATE CASCADE,
+    CONSTRAINT fk_usuario_empresa FOREIGN KEY (id_empresa) REFERENCES empresa (id_empresa) ON UPDATE CASCADE
 ) ENGINE = InnoDB;
 
 -- =========================
@@ -159,14 +185,6 @@ CREATE TABLE ganadores (
 -- =========================
 -- DATOS BASE
 -- =========================
-INSERT INTO roles (nombre) VALUES ('admin'), ('operador');
-
-INSERT INTO
-    estados (nombre, descripcion)
-VALUES ('activo', 'Activo'),
-    ('inactivo', 'Inactivo'),
-    ('ganador', 'Ya ganó'),
-    ('pendiente', 'Pendiente');
 
 INSERT INTO
     permisos (nombre, descripcion)

@@ -1,64 +1,176 @@
 .seccionUsuario {
   width: 100%;
-  /* padding: 10px; */
+
+  background: #ffffff;
+
+  padding: 25px;
 
   display: flex;
-  flex-direction: column;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 20px;
 
-  background: #ffff;
-  border-radius: 15px;
-  overflow-y: auto;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
+
+/* ========================================
+   MENU USUARIO
+======================================== */
+
 .MenuUsuario {
   width: 100%;
-  display: flex;
+
+  background: #ffffff;
+
+  padding: 14px 18px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
 }
+
 .MenuUsBox {
   width: 100%;
-  background: #fff;
-  padding: 20px;
-  border-radius: 15px;
+
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+
+  flex-wrap: wrap;
+
+  gap: 12px;
 }
+
 .listaUsM {
   list-style: none;
 }
+
+/* ========================================
+   LINK MENU
+======================================== */
+
 .linkUsM {
-  width: 150px;
-  width: 100%;
-  padding: 10px;
-  border-radius: 20px;
+  min-width: 160px;
+
+  padding: 12px 18px;
+
+  border-radius: 14px;
+
   text-decoration: none;
-  color: #383838;
-}
-.linkUsM .bi-people {
-  color: #383838 !important;
+
+  color: #4b4b4b;
+
   background: transparent;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
 }
+
+.linkUsM i {
+  font-size: 18px;
+
+  color: inherit;
+}
+
 .linkUsM:hover {
-  background: #caff74;
-  color: #426c00;
+  background: #99da1e;
+
+  color: #416400;
+
+  transform: translateY(-2px);
 }
 
-/* taba de usuarios */
-.tablaUsuario {
-  text-align: center;
-  width: 100%;
-  padding: 20px;
-  border-radius: 15px;
-  /* background: #ffff; */
-}
+/* ========================================
+   TABLAS
+======================================== */
 
-/* tala ganadores */
+.tablaUsuario,
 .tablaGanadores {
-  text-align: center;
+  cursor: default;
   width: 100%;
-  padding: 20px;
-  border-radius: 15px;
-  /* background: #ffff; */
-  overflow: auto;
+  background: #ffffff;
+  border-collapse: collapse;
+  overflow: hidden;
+  text-align: center;
+  /* box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08); */
+}
+
+/* ========================================
+   COLUMNAS
+======================================== */
+
+.tablaUsuario th,
+.tablaGanadores th {
+  background: #000000;
+  color: #ffffff;
+  padding: 18px 15px;
+  font-size: 15px;
+  font-weight: 700;
+  border-bottom: 1px solid #2d2d2d;
+}
+
+/* ========================================
+   FILAS
+======================================== */
+
+.tablaUsuario td,
+.tablaGanadores td {
+  background: #f4f4f4;
+  color: #1f1f1f;
+  padding: 16px 15px;
+  font-size: 14px;
+  border-bottom: 1px solid #e2e2e2;
+  transition: 0.3s ease;
+}
+
+/* HOVER FILAS */
+
+.tablaUsuario tr:hover td,
+.tablaGanadores tr:hover td {
+  background: #fbfbfbd0;
+}
+
+/* TELEFONO */
+
+.tablaUsuario td span,
+.tablaGanadores td span {
+  font-weight: bold;
+  color: #000000;
+}
+
+/* ========================================
+   RESPONSIVE
+======================================== */
+
+@media (max-width: 768px) {
+  .MenuUsBox {
+    /* flex-direction: column; */
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .linkUsM {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .tablaUsuario,
+  .tablaGanadores {
+    display: block;
+
+    overflow-x: auto;
+
+    white-space: nowrap;
+  }
+
+  .tablaUsuario th,
+  .tablaUsuario td,
+  .tablaGanadores th,
+  .tablaGanadores td {
+    padding: 14px;
+  }
 }

@@ -15,7 +15,7 @@
         </li>
 
         <li class="listaEvn">
-            <a href="#" class="linkEnv" target="_blank">
+            <a href="<?= BASE_URL ?>/Panel/Ruleta" class="linkEnv" target="_blank">
                 <i class="bi bi-asterisk"></i>
                 <span>Ir a ruleta</span>
             </a>

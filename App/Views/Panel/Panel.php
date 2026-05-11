@@ -31,8 +31,7 @@
 
     <!-- CONTENIDO DINÁMICO -->
     <main class="main">
-        <div class="subMain">
-            <?php
+        <?php
             if (isset($subview)) {
                 // El subview ya debe venir con la ruta interna, ej: 'Panel/Dashboard/index'
                 $file = VIEW_PATH . str_replace(['/', '\\'], DIRECTORY_SEPARATOR, $subview) . '.php';
@@ -40,15 +39,17 @@
                 if (file_exists($file)) {
                     include $file;
                 } else {
-                    echo "<div class='error'>Error: No se encontró la vista <b>{$subview}</b></div>";
+                    echo "<div class='error' style='width:100%; background-color: rgba(255, 0, 0, 0.14); border: 2px solid #f00; padding: 20px; color: #f00;'>Error: No se encontró la vista <b>{$subview}</b></div>";
                 }
             } else {
                 // Vista por defecto si no se pasa subview
                 echo "<h1>Bienvenido de nuevo, " . htmlspecialchars($_SESSION['username'] ?? 'Usuario') . "</h1>";
                 echo "<p>Selecciona una opción en el menú para comenzar.</p>";
             }
-            ?>
-        </div>
+        ?>
+        <!-- <div class="subMain">
+
+        </div> -->
     </main>
 
     <!-- SCRIPTS GLOBALES -->

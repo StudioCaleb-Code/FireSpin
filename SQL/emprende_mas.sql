@@ -1,487 +1,372 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Servidor: 127.0.0.1  
--- Tiempo de generación: 07-05-2026 a las 19:11:45
--- Versión del servidor: 10.4.32-MariaDB
--- Versión de PHP: 8.2.12
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Base de datos: `emprende_mas`
---
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `estados`
---
-
-CREATE TABLE `estados` (
-  `id_estado` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `estados`
---
-
-INSERT INTO `estados` (`id_estado`, `nombre`, `descripcion`) VALUES
-(1, 'activo', 'Activo'),
-(2, 'inactivo', 'Inactivo'),
-(3, 'ganador', 'Ya ganó'),
-(4, 'pendiente', 'Pendiente');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `eventos`
---
-
-CREATE TABLE `eventos` (
-  `id_evento` int(11) NOT NULL,
-  `nombre` varchar(200) NOT NULL,
-  `slug` varchar(255) DEFAULT NULL,
-  `descripcion` text DEFAULT NULL,
-  `fecha_inicio` datetime DEFAULT NULL,
-  `fecha_fin` datetime DEFAULT NULL,
-  `imagen` varchar(255) DEFAULT NULL,
-  `diseno` varchar(50) DEFAULT NULL,
-  `id_estado` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `evento_premio`
---
-
-CREATE TABLE `evento_premio` (
-  `id_evento` int(11) NOT NULL,
-  `id_premio` int(11) NOT NULL,
-  `cantidad` int(11) DEFAULT 1
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `galerias`
---
-
-CREATE TABLE `galerias` (
-  `id_galeria` int(11) NOT NULL,
-  `nombre` varchar(100) DEFAULT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `ganadores`
---
-
-CREATE TABLE `ganadores` (
-  `id_ganador` int(11) NOT NULL,
-  `id_evento` int(11) NOT NULL,
-  `id_participante` int(11) NOT NULL,
-  `id_premio` int(11) NOT NULL,
-  `fecha` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `participantes`
---
-
-CREATE TABLE `participantes` (
-  `id_participante` int(11) NOT NULL,
-  `dni` varchar(8) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `apellido` varchar(150) NOT NULL,
-  `telefono` varchar(15) DEFAULT NULL,
-  `direccion` varchar(255) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `permisos`
---
-
-CREATE TABLE `permisos` (
-  `id_permiso` int(11) NOT NULL,
-  `nombre` varchar(100) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `permisos`
---
-
-INSERT INTO `permisos` (`id_permiso`, `nombre`, `descripcion`) VALUES
-(1, 'ver_usuarios', 'Ver usuarios'),
-(2, 'crear_usuarios', 'Crear usuarios'),
-(3, 'editar_usuarios', 'Editar usuarios'),
-(4, 'eliminar_usuarios', 'Eliminar usuarios'),
-(5, 'ver_eventos', 'Ver eventos'),
-(6, 'crear_eventos', 'Crear eventos'),
-(7, 'editar_eventos', 'Editar eventos'),
-(8, 'eliminar_eventos', 'Eliminar eventos'),
-(9, 'usar_ruleta', 'Usar ruleta');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `premios`
---
-
-CREATE TABLE `premios` (
-  `id_premio` int(11) NOT NULL,
-  `nombre` varchar(255) NOT NULL,
-  `descripcion` varchar(255) DEFAULT NULL,
-  `id_galeria` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `premio_imagen`
---
-
-CREATE TABLE `premio_imagen` (
-  `id_imagen` int(11) NOT NULL,
-  `id_premio` int(11) NOT NULL,
-  `ruta` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `registro_evento`
---
-
-CREATE TABLE `registro_evento` (
-  `id_registro` int(11) NOT NULL,
-  `id_evento` int(11) NOT NULL,
-  `id_participante` int(11) NOT NULL,
-  `id_estado` int(11) DEFAULT NULL,
-  `fecha_registro` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `roles`
---
-
-CREATE TABLE `roles` (
-  `id_rol` int(11) NOT NULL,
-  `nombre` varchar(50) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `roles`
---
-
-INSERT INTO `roles` (`id_rol`, `nombre`) VALUES
-(1, 'admin'),
-(2, 'operador');
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `rol_permiso`
---
-
-CREATE TABLE `rol_permiso` (
-  `id_rol` int(11) NOT NULL,
-  `id_permiso` int(11) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `rol_permiso`
---
-
-INSERT INTO `rol_permiso` (`id_rol`, `id_permiso`) VALUES
-(1, 1),
-(1, 2),
-(1, 3),
-(1, 4),
-(1, 5),
-(1, 6),
-(1, 7),
-(1, 8),
-(1, 9);
-
--- --------------------------------------------------------
-
---
--- Estructura de tabla para la tabla `usuarios`
---
-
-CREATE TABLE `usuarios` (
-  `id_usuario` int(11) NOT NULL,
-  `id_rol` int(11) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `username` varchar(150) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `id_estado` int(11) DEFAULT NULL,
-  `created_at` datetime DEFAULT current_timestamp()
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
-
---
--- Volcado de datos para la tabla `usuarios`
---
-
-INSERT INTO `usuarios` (`id_usuario`, `id_rol`, `email`, `username`, `password`, `id_estado`, `created_at`) VALUES
-(1, 1, 'caleb@dev.com', 'Caleb Ingeniero', '$2y$10$kYZBG2JT0c4FFz8XbiUZfOJESXon5utaVLY1gyXWTppcfEh0uQScS', 1, '2026-05-05 21:23:53');
-
---
--- Índices para tablas volcadas
---
-
---
--- Indices de la tabla `estados`
---
-ALTER TABLE `estados`
-  ADD PRIMARY KEY (`id_estado`);
-
---
--- Indices de la tabla `eventos`
---
-ALTER TABLE `eventos`
-  ADD PRIMARY KEY (`id_evento`),
-  ADD UNIQUE KEY `slug` (`slug`),
-  ADD KEY `fk_evento_estado` (`id_estado`);
-
---
--- Indices de la tabla `evento_premio`
---
-ALTER TABLE `evento_premio`
-  ADD PRIMARY KEY (`id_evento`,`id_premio`),
-  ADD KEY `fk_ep_premio` (`id_premio`);
-
---
--- Indices de la tabla `galerias`
---
-ALTER TABLE `galerias`
-  ADD PRIMARY KEY (`id_galeria`);
-
---
--- Indices de la tabla `ganadores`
---
-ALTER TABLE `ganadores`
-  ADD PRIMARY KEY (`id_ganador`),
-  ADD KEY `fk_gan_evento` (`id_evento`),
-  ADD KEY `fk_gan_participante` (`id_participante`),
-  ADD KEY `fk_gan_premio` (`id_premio`);
-
---
--- Indices de la tabla `participantes`
---
-ALTER TABLE `participantes`
-  ADD PRIMARY KEY (`id_participante`),
-  ADD UNIQUE KEY `dni` (`dni`);
-
---
--- Indices de la tabla `permisos`
---
-ALTER TABLE `permisos`
-  ADD PRIMARY KEY (`id_permiso`),
-  ADD UNIQUE KEY `nombre` (`nombre`);
-
---
--- Indices de la tabla `premios`
---
-ALTER TABLE `premios`
-  ADD PRIMARY KEY (`id_premio`),
-  ADD KEY `fk_premio_galeria` (`id_galeria`);
-
---
--- Indices de la tabla `premio_imagen`
---
-ALTER TABLE `premio_imagen`
-  ADD PRIMARY KEY (`id_imagen`),
-  ADD KEY `fk_img_premio` (`id_premio`);
-
---
--- Indices de la tabla `registro_evento`
---
-ALTER TABLE `registro_evento`
-  ADD PRIMARY KEY (`id_registro`),
-  ADD UNIQUE KEY `uk_evento_participante` (`id_evento`,`id_participante`),
-  ADD KEY `fk_reg_participante` (`id_participante`),
-  ADD KEY `fk_reg_estado` (`id_estado`);
-
---
--- Indices de la tabla `roles`
---
-ALTER TABLE `roles`
-  ADD PRIMARY KEY (`id_rol`),
-  ADD UNIQUE KEY `nombre` (`nombre`);
-
---
--- Indices de la tabla `rol_permiso`
---
-ALTER TABLE `rol_permiso`
-  ADD PRIMARY KEY (`id_rol`,`id_permiso`),
-  ADD KEY `fk_rolperm_perm` (`id_permiso`);
-
---
--- Indices de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD PRIMARY KEY (`id_usuario`),
-  ADD UNIQUE KEY `email` (`email`),
-  ADD UNIQUE KEY `username` (`username`),
-  ADD KEY `fk_usuario_rol` (`id_rol`),
-  ADD KEY `fk_usuario_estado` (`id_estado`);
-
---
--- AUTO_INCREMENT de las tablas volcadas
---
-
---
--- AUTO_INCREMENT de la tabla `estados`
---
-ALTER TABLE `estados`
-  MODIFY `id_estado` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
-
---
--- AUTO_INCREMENT de la tabla `eventos`
---
-ALTER TABLE `eventos`
-  MODIFY `id_evento` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `galerias`
---
-ALTER TABLE `galerias`
-  MODIFY `id_galeria` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `ganadores`
---
-ALTER TABLE `ganadores`
-  MODIFY `id_ganador` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `participantes`
---
-ALTER TABLE `participantes`
-  MODIFY `id_participante` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `permisos`
---
-ALTER TABLE `permisos`
-  MODIFY `id_permiso` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
-
---
--- AUTO_INCREMENT de la tabla `premios`
---
-ALTER TABLE `premios`
-  MODIFY `id_premio` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `premio_imagen`
---
-ALTER TABLE `premio_imagen`
-  MODIFY `id_imagen` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `registro_evento`
---
-ALTER TABLE `registro_evento`
-  MODIFY `id_registro` int(11) NOT NULL AUTO_INCREMENT;
-
---
--- AUTO_INCREMENT de la tabla `roles`
---
-ALTER TABLE `roles`
-  MODIFY `id_rol` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
-
---
--- AUTO_INCREMENT de la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  MODIFY `id_usuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
-
---
--- Restricciones para tablas volcadas
---
-
---
--- Filtros para la tabla `eventos`
---
-ALTER TABLE `eventos`
-  ADD CONSTRAINT `fk_evento_estado` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `evento_premio`
---
-ALTER TABLE `evento_premio`
-  ADD CONSTRAINT `fk_ep_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_ep_premio` FOREIGN KEY (`id_premio`) REFERENCES `premios` (`id_premio`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `ganadores`
---
-ALTER TABLE `ganadores`
-  ADD CONSTRAINT `fk_gan_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_gan_participante` FOREIGN KEY (`id_participante`) REFERENCES `participantes` (`id_participante`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_gan_premio` FOREIGN KEY (`id_premio`) REFERENCES `premios` (`id_premio`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `premios`
---
-ALTER TABLE `premios`
-  ADD CONSTRAINT `fk_premio_galeria` FOREIGN KEY (`id_galeria`) REFERENCES `galerias` (`id_galeria`) ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `premio_imagen`
---
-ALTER TABLE `premio_imagen`
-  ADD CONSTRAINT `fk_img_premio` FOREIGN KEY (`id_premio`) REFERENCES `premios` (`id_premio`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `registro_evento`
---
-ALTER TABLE `registro_evento`
-  ADD CONSTRAINT `fk_reg_estado` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_reg_evento` FOREIGN KEY (`id_evento`) REFERENCES `eventos` (`id_evento`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_reg_participante` FOREIGN KEY (`id_participante`) REFERENCES `participantes` (`id_participante`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `rol_permiso`
---
-ALTER TABLE `rol_permiso`
-  ADD CONSTRAINT `fk_rolperm_perm` FOREIGN KEY (`id_permiso`) REFERENCES `permisos` (`id_permiso`) ON DELETE CASCADE ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_rolperm_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Filtros para la tabla `usuarios`
---
-ALTER TABLE `usuarios`
-  ADD CONSTRAINT `fk_usuario_estado` FOREIGN KEY (`id_estado`) REFERENCES `estados` (`id_estado`) ON UPDATE CASCADE,
-  ADD CONSTRAINT `fk_usuario_rol` FOREIGN KEY (`id_rol`) REFERENCES `roles` (`id_rol`) ON UPDATE CASCADE;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+CREATE DATABASE IF NOT EXISTS emprende_mas DEFAULT CHARACTER SET utf8mb4 DEFAULT COLLATE utf8mb4_unicode_ci;
+
+USE emprende_mas;
+
+-- =====================================================
+-- ROLES
+-- =====================================================
+
+CREATE TABLE roles (
+    id_rol INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- PERMISOS
+-- =====================================================
+
+CREATE TABLE permisos (
+    id_permiso INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(100) NOT NULL UNIQUE,
+    descripcion VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- RELACION ROL - PERMISO
+-- =====================================================
+
+CREATE TABLE rol_permiso (
+    id_rol INT NOT NULL,
+    id_permiso INT NOT NULL,
+    PRIMARY KEY (id_rol, id_permiso),
+    CONSTRAINT fk_rolperm_rol FOREIGN KEY (id_rol) REFERENCES roles (id_rol) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_rolperm_perm FOREIGN KEY (id_permiso) REFERENCES permisos (id_permiso) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- ESTADOS GENERALES
+-- =====================================================
+
+CREATE TABLE estados (
+    id_estado INT AUTO_INCREMENT PRIMARY KEY,
+    nombre VARCHAR(50) NOT NULL UNIQUE,
+    descripcion VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- EMPRESAS
+-- =====================================================
+
+CREATE TABLE empresas (
+    id_empresa INT AUTO_INCREMENT PRIMARY KEY,
+    ruc CHAR(11) NOT NULL UNIQUE,
+    dni_dueno CHAR(8),
+    nombre_empresa VARCHAR(255) NOT NULL,
+    dueno VARCHAR(255) NOT NULL,
+    encargado VARCHAR(255),
+    telefono VARCHAR(15),
+    direccion VARCHAR(255) NOT NULL,
+    logo_empresa VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at DATETIME NULL
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- DATOS PERSONALES USUARIOS
+-- =====================================================
+
+CREATE TABLE datos_usuario (
+    id_datos_usuario INT AUTO_INCREMENT PRIMARY KEY,
+    dni CHAR(8) NOT NULL,
+    nombres VARCHAR(150) NOT NULL,
+    apellidos VARCHAR(150) NOT NULL,
+    telefono VARCHAR(15),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- USUARIOS DEL PANEL
+-- =====================================================
+
+
+CREATE TABLE usuarios (
+    id_usuario INT AUTO_INCREMENT PRIMARY KEY,
+
+    id_rol INT NOT NULL,
+    id_datos_usuario INT NOT NULL,
+
+-- NULL para superadmin global
+id_empresa INT NULL,
+
+    email VARCHAR(255) NOT NULL UNIQUE,
+    username VARCHAR(150) NOT NULL UNIQUE,
+    password VARCHAR(255) NOT NULL,
+
+    id_estado INT DEFAULT 1,
+
+    ultimo_login DATETIME NULL,
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at DATETIME NULL,
+
+    CONSTRAINT fk_usuario_rol
+    FOREIGN KEY (id_rol)
+    REFERENCES roles(id_rol)
+    ON DELETE RESTRICT
+    ON UPDATE CASCADE,
+
+    CONSTRAINT fk_usuario_estado
+    FOREIGN KEY (id_estado)
+    REFERENCES estados(id_estado)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+
+    CONSTRAINT fk_usuario_datos
+    FOREIGN KEY (id_datos_usuario)
+    REFERENCES datos_usuario(id_datos_usuario)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT fk_usuario_empresa
+    FOREIGN KEY (id_empresa)
+    REFERENCES empresas(id_empresa)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE
+
+) ENGINE=InnoDB;
+
+-- =====================================================
+-- GALERIAS
+-- =====================================================
+
+CREATE TABLE galerias (
+    id_galeria INT AUTO_INCREMENT PRIMARY KEY,
+    id_empresa INT NOT NULL,
+    nombre VARCHAR(100) NOT NULL,
+    descripcion VARCHAR(255),
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_galeria_empresa FOREIGN KEY (id_empresa) REFERENCES empresas (id_empresa) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- PREMIOS
+-- =====================================================
+
+CREATE TABLE premios (
+    id_premio INT AUTO_INCREMENT PRIMARY KEY,
+    id_empresa INT NOT NULL,
+    id_galeria INT NULL,
+    nombre VARCHAR(255) NOT NULL,
+    descripcion TEXT,
+    stock INT DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    CONSTRAINT fk_premio_empresa FOREIGN KEY (id_empresa) REFERENCES empresas (id_empresa) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_premio_galeria FOREIGN KEY (id_galeria) REFERENCES galerias (id_galeria) ON DELETE SET NULL ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- MULTIPLES IMAGENES DE PREMIOS
+-- =====================================================
+
+CREATE TABLE premio_imagenes (
+    id_imagen INT AUTO_INCREMENT PRIMARY KEY,
+    id_premio INT NOT NULL,
+    ruta VARCHAR(255) NOT NULL,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_imagen_premio FOREIGN KEY (id_premio) REFERENCES premios (id_premio) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- EVENTOS
+-- =====================================================
+
+CREATE TABLE eventos (
+    id_evento INT AUTO_INCREMENT PRIMARY KEY,
+    id_empresa INT NOT NULL,
+    nombre VARCHAR(200) NOT NULL,
+    slug VARCHAR(255) NOT NULL,
+    token VARCHAR(100) NOT NULL UNIQUE,
+    descripcion TEXT,
+    fecha_inicio DATETIME,
+    fecha_fin DATETIME,
+    imagen VARCHAR(255),
+    diseno VARCHAR(100),
+    reutilizar_participantes TINYINT(1) DEFAULT 0,
+    id_estado INT DEFAULT 1,
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    deleted_at DATETIME NULL,
+    CONSTRAINT fk_evento_empresa FOREIGN KEY (id_empresa) REFERENCES empresas (id_empresa) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_evento_estado FOREIGN KEY (id_estado) REFERENCES estados (id_estado) ON DELETE SET NULL ON UPDATE CASCADE,
+    UNIQUE KEY uk_empresa_slug (id_empresa, slug)
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- EVENTO - PREMIOS
+-- =====================================================
+
+CREATE TABLE evento_premio (
+    id_evento INT NOT NULL,
+    id_premio INT NOT NULL,
+    cantidad INT DEFAULT 1,
+    PRIMARY KEY (id_evento, id_premio),
+    CONSTRAINT fk_evento_premio_evento FOREIGN KEY (id_evento) REFERENCES eventos (id_evento) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_evento_premio_premio FOREIGN KEY (id_premio) REFERENCES premios (id_premio) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- PARTICIPANTES
+-- CADA EMPRESA TIENE SUS PARTICIPANTES
+-- =====================================================
+
+
+CREATE TABLE participantes (
+    id_participante INT AUTO_INCREMENT PRIMARY KEY,
+
+    id_empresa INT NOT NULL,
+
+    dni CHAR(8) NOT NULL,
+
+    nombre VARCHAR(100) NOT NULL,
+    apellido VARCHAR(150) NOT NULL,
+
+    telefono VARCHAR(15),
+    direccion VARCHAR(255),
+    email VARCHAR(255),
+
+    created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+    updated_at DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_participante_empresa
+    FOREIGN KEY (id_empresa)
+    REFERENCES empresas(id_empresa)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+-- evita duplicado SOLO dentro de la misma empresa
+UNIQUE KEY uk_empresa_dni (id_empresa, dni) ) ENGINE=InnoDB;
+
+-- =====================================================
+-- REGISTRO DE PARTICIPANTES A EVENTOS
+-- =====================================================
+
+
+CREATE TABLE registro_evento (
+    id_registro INT AUTO_INCREMENT PRIMARY KEY,
+
+    id_evento INT NOT NULL,
+    id_participante INT NOT NULL,
+
+    numero_ticket VARCHAR(50) NULL,
+
+    es_ganador TINYINT(1) DEFAULT 0,
+    activo TINYINT(1) DEFAULT 1,
+
+    id_estado INT DEFAULT 1,
+
+    fecha_registro DATETIME DEFAULT CURRENT_TIMESTAMP,
+
+    CONSTRAINT fk_registro_evento
+    FOREIGN KEY (id_evento)
+    REFERENCES eventos(id_evento)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT fk_registro_participante
+    FOREIGN KEY (id_participante)
+    REFERENCES participantes(id_participante)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
+
+    CONSTRAINT fk_registro_estado
+    FOREIGN KEY (id_estado)
+    REFERENCES estados(id_estado)
+    ON DELETE SET NULL
+    ON UPDATE CASCADE,
+
+-- evita duplicarse en el MISMO evento
+UNIQUE KEY uk_evento_participante (id_evento, id_participante)
+
+) ENGINE=InnoDB;
+
+-- =====================================================
+-- GANADORES
+-- =====================================================
+
+CREATE TABLE ganadores (
+    id_ganador INT AUTO_INCREMENT PRIMARY KEY,
+    id_evento INT NOT NULL,
+    id_participante INT NOT NULL,
+    id_premio INT NOT NULL,
+    fecha DATETIME DEFAULT CURRENT_TIMESTAMP,
+    CONSTRAINT fk_ganador_evento FOREIGN KEY (id_evento) REFERENCES eventos (id_evento) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_ganador_participante FOREIGN KEY (id_participante) REFERENCES participantes (id_participante) ON DELETE CASCADE ON UPDATE CASCADE,
+    CONSTRAINT fk_ganador_premio FOREIGN KEY (id_premio) REFERENCES premios (id_premio) ON DELETE CASCADE ON UPDATE CASCADE
+) ENGINE = InnoDB;
+
+-- =====================================================
+-- DATOS INICIALES
+-- =====================================================
+
+INSERT INTO
+    permisos (nombre, descripcion)
+VALUES (
+        'ver_usuarios',
+        'Ver usuarios'
+    ),
+    (
+        'crear_usuarios',
+        'Crear usuarios'
+    ),
+    (
+        'editar_usuarios',
+        'Editar usuarios'
+    ),
+    (
+        'eliminar_usuarios',
+        'Eliminar usuarios'
+    ),
+    (
+        'ver_empresas',
+        'Ver empresas'
+    ),
+    (
+        'crear_empresas',
+        'Crear empresas'
+    ),
+    (
+        'editar_empresas',
+        'Editar empresas'
+    ),
+    (
+        'eliminar_empresas',
+        'Eliminar empresas'
+    ),
+    ('ver_eventos', 'Ver eventos'),
+    (
+        'crear_eventos',
+        'Crear eventos'
+    ),
+    (
+        'editar_eventos',
+        'Editar eventos'
+    ),
+    (
+        'eliminar_eventos',
+        'Eliminar eventos'
+    ),
+    (
+        'ver_participantes',
+        'Ver participantes'
+    ),
+    (
+        'crear_participantes',
+        'Crear participantes'
+    ),
+    ('usar_ruleta', 'Usar ruleta');
+
+-- =====================================================
+-- TODOS LOS PERMISOS AL SUPERADMIN
+-- =====================================================
+
+INSERT INTO
+    rol_permiso (id_rol, id_permiso)
+SELECT 1, id_permiso
+FROM permisos;

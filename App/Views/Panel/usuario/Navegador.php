@@ -28,5 +28,12 @@
                 <span>Usuarios</span>
             </a>
         </li>
+        <li class="listaUsM">
+            <!-- Apunta al método administrativos() o como lo llames -->
+            <a href="<?= BASE_URL ?>/Panel/Usuarios/administrativos" class="linkUsM">
+                <i class="bi bi-plus-lg"></i>
+                <span>Regitara</span>
+            </a>
+        </li>
     </ul>
 </nav>

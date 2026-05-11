@@ -32,6 +32,7 @@ class AuthController extends Controller
                     $_SESSION['usuario_id'] = $user['id_usuario'];
                     $_SESSION['username']   = $user['username'];
                     $_SESSION['id_rol']     = $user['id_rol'];
+                    $_SESSION['datosU']     = $user['nombres'];
                     $_SESSION['last_activity'] = time(); // Para control de tiempo
 
                     header("Location: " . BASE_URL . "/panel");

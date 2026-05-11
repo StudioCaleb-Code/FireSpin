@@ -1,25 +1,51 @@
 @import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
 
+:root {
+  --bg: #f4f7fb;
+  --white: #ffffff;
+
+  --text: #1f2937;
+  --text-light: #6b7280;
+
+  --primary: #7c3aed;
+  --primary-soft: #ede9fe;
+
+  --success: #22c55e;
+  --success-soft: #dcfce7;
+
+  --danger: #ef4444;
+  --danger-soft: #fee2e2;
+
+  --blue: #3b82f6;
+  --blue-soft: #dbeafe;
+
+  --yellow: #facc15;
+  --yellow-soft: #fef9c3;
+
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+
+  --radius: 22px;
+
+  --transition: 0.3s ease;
+}
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 
   font-family: "Quicksand", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 500;
-  font-style: normal;
 
   scroll-behavior: smooth;
 }
 
 body {
-  background: #ffffff;
+  background: var(--bg);
 
   display: grid;
 
-  grid-template-columns: 235px 1fr;
-  grid-template-rows: 70px 1fr;
+  grid-template-columns: 260px 1fr;
+  grid-template-rows: 75px 1fr;
 
   grid-template-areas:
     "sidebar header"
@@ -30,95 +56,89 @@ body {
   overflow: hidden;
 }
 
-/* =========================
+/* =========================================
    SIDEBAR
-========================= */
+========================================= */
 
 .sidebar {
-  background: #fff;
-
   grid-area: sidebar;
 
-  height: 100vh;
+  background: rgba(255, 255, 255, 0.75);
+
+  backdrop-filter: blur(20px);
+
+  border-right: 1px solid rgba(255, 255, 255, 0.5);
+
+  box-shadow: var(--shadow);
 
   display: flex;
   flex-direction: column;
 
-  position: sticky;
-  top: 0;
-
   overflow: hidden;
-
-  border-right: 1px solid #f1f1f1;
 
   z-index: 100;
 }
 
-/* =========================
+/* =========================================
    LOGO
-========================= */
+========================================= */
 
 .logoSidebar {
   width: 100%;
 
-  display: flex;
-  align-items: center;
-
-  gap: 10px;
-
   padding: 20px;
 
-  color: #23a100;
-  font-weight: bold;
+  display: flex;
+  align-items: center;
+  gap: 14px;
 
   flex-shrink: 0;
+
+  border-bottom: 1px solid #cfcfcf80;
 }
 
 .logoSidebar .bi {
+  width: 58px;
+  height: 58px;
+
+  border-radius: 18px;
+
   display: flex;
   align-items: center;
   justify-content: center;
 
-  width: 55px;
-  height: 55px;
+  font-size: 28px;
 
-  border-radius: 100%;
+  color: var(--primary);
 
-  font-size: 30px;
-
-  color: #2ed500;
-
-  background: #33ed0017;
+  background: var(--primary-soft);
 }
 
-/* =========================
+.logoSidebar h2 {
+  font-size: 24px;
+  color: var(--text);
+}
+
+/* =========================================
    MENU
-========================= */
+========================================= */
 
 .menu {
   flex: 1;
 
-  min-height: 0;
-
   overflow-y: auto;
-  overflow-x: visible;
+
+  padding: 10px;
 }
 
 .menuBox {
-  width: 100%;
-
   display: flex;
   flex-direction: column;
-
-  overflow: visible;
+  gap: 8px;
 }
 
 .listaMenu {
-  width: 100%;
-
   list-style: none;
-
-  overflow: visible;
 }
 
 .menuLink {
@@ -126,332 +146,240 @@ body {
 
   display: flex;
   align-items: center;
+  gap: 14px;
 
-  gap: 10px;
-
-  padding: 15px;
+  padding: 14px;
 
   text-decoration: none;
-  color: #151515;
+
+  border-radius: 18px;
+
+  color: var(--text);
+
+  transition: var(--transition);
 
   position: relative;
-
-  white-space: nowrap;
-
-  overflow: visible;
-
-  transition: 0.2s ease;
 }
 
 .menuLink:hover {
-  background: #f7f7f7;
+  background: rgba(124, 58, 237, 0.08);
+
+  transform: translateX(5px);
+}
+
+.menuLink.active {
+  background: var(--primary-soft);
+  color: var(--primary);
 }
 
 .menuLink .bi {
+  min-width: 48px;
+  width: 48px;
+  height: 48px;
+
+  border-radius: 16px;
+
   display: flex;
   align-items: center;
   justify-content: center;
-
-  min-width: 45px;
-  width: 45px;
-  height: 45px;
-
-  border-radius: 100%;
 
   font-size: 20px;
 
   color: #fff;
 }
 
-/* TOOLTIP */
-
 .spanMenu {
-  transition: 0.2s ease;
+  font-size: 15px;
+  font-weight: 600;
 }
 
-/* =========================
-   ICONOS
-========================= */
+/* =========================================
+   ICON COLORS
+========================================= */
 
 .bi-columns-gap {
-  background: #00a2ff;
+  background: linear-gradient(135deg, #3b82f6, #2563eb);
 }
 
 .bi-people {
-  background: #ff00e1;
+  background: linear-gradient(135deg, #ec4899, #db2777);
 }
 
 .bi-calendar3 {
-  background: #3bd311;
+  background: linear-gradient(135deg, #22c55e, #16a34a);
 }
 
 .bi-folder {
-  background: #ffd000;
+  background: linear-gradient(135deg, #f59e0b, #d97706);
 }
 
 .bi-browser-chrome {
-  background: #00a2ff;
+  background: linear-gradient(135deg, #06b6d4, #0891b2);
 }
 
 .bi-power {
-  background: #ff0000;
+  background: linear-gradient(135deg, #ef4444, #dc2626);
 }
 
-/* =========================
+/* =========================================
    HEADER
-========================= */
+========================================= */
 
 .header {
   grid-area: header;
 
-  position: sticky;
-  top: 0;
+  background: rgba(255, 255, 255, 0.75);
 
-  z-index: 10;
+  backdrop-filter: blur(20px);
 
-  background: #fff;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.5);
 
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  padding: 15px;
+  padding: 15px 22px;
 
-  border-bottom: 1px solid #f1f1f1;
+  box-shadow: var(--shadow);
+
+  z-index: 50;
 }
 
-.menu-toggle {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+/* BUTTON */
+
+.menu-toggle,
+.perfilLink .bi {
+  width: 48px;
+  height: 48px;
 
   border: none;
-  background: transparent;
+  border-radius: 16px;
 
   cursor: pointer;
-}
 
-.menu-toggle .bi {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  width: 45px;
-  height: 45px;
-
-  border-radius: 100%;
 
   font-size: 20px;
 
-  color: #2ed500;
+  background: var(--primary-soft);
+  color: var(--primary);
 
-  background: #33ed0017;
-
-  border: 2px solid #2fd700;
+  transition: var(--transition);
 }
+
+.menu-toggle:hover,
+.perfilLink .bi:hover {
+  transform: scale(1.05);
+}
+
+/* PERFIL */
 
 .perfilHeader {
   display: flex;
   align-items: center;
-
-  gap: 10px;
+  gap: 14px;
 }
 
 .perfilLink {
   text-decoration: none;
-}
-
-.perfilLink .bi {
   display: flex;
   align-items: center;
-  justify-content: center;
-
-  width: 45px;
-  height: 45px;
-
-  border-radius: 100%;
-
-  font-size: 20px;
-
-  color: #2ed500;
-
-  background: #33ed0017;
-
-  border: 2px solid #2fd700;
+  gap: 14px;
 }
+
+/* THEME */
 
 .theme {
+  background: var(--white);
+
+  padding: 10px 16px;
+
+  border-radius: 16px;
+
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 14px;
 
-  gap: 20px;
-
-  padding: 10px;
-
-  border-radius: 20px;
-
-  border: 2px solid #2fd700;
-
-  background: #33ed0017;
+  box-shadow: var(--shadow);
 }
 
-/* =========================
+/* =========================================
    MAIN
-========================= */
+========================================= */
 
 .main {
   grid-area: main;
 
-  padding: 10px;
-
-  display: flex;
-  flex-direction: column;
-
   overflow-y: auto;
-}
 
-.subMain {
-  flex: 1;
-
-  padding: 20px;
-
-  border-radius: 15px;
-
-  background: #d0ff6a;
+  padding: 15px;
 
   display: flex;
   flex-direction: column;
-
   gap: 10px;
-
-  overflow: hidden;
 }
 
-/* =========================
+/* .subMain {
+  min-height: 100%;
+
+
+  backdrop-filter: blur(20px);
+
+  border-radius: 30px;
+
+  border: 1px solid rgba(255, 255, 255, 0.5);
+} */
+
+/* =========================================
    SCROLL
-========================= */
+========================================= */
 
 .menu::-webkit-scrollbar,
 .main::-webkit-scrollbar {
   width: 10px;
 }
 
-.menu::-webkit-scrollbar-track,
-.main::-webkit-scrollbar-track {
-  background: #f9f9f9;
-
-  border-radius: 10px;
-}
-
 .menu::-webkit-scrollbar-thumb,
 .main::-webkit-scrollbar-thumb {
-  background: #dbdbdb;
-
-  border-radius: 10px;
+  background: #dedee1;
+  /* border-radius: 20px; */
 }
 
-/* =========================
+/* =========================================
    TABLET
-========================= */
+========================================= */
 
 @media (max-width: 1080px) {
   body {
-    grid-template-columns: 80px 1fr;
-    grid-template-rows: 60px 1fr;
-  }
-
-  .sidebar {
-    width: 80px;
-  }
-
-  /* LOGO */
-
-  .logoSidebar {
-    justify-content: center;
-
-    padding: 10px;
+    grid-template-columns: 85px 1fr;
   }
 
   .logoSidebar h2 {
     display: none;
   }
 
-  .logoSidebar .bi {
-    margin: 0;
-
-    background: transparent;
+  .logoSidebar {
+    justify-content: center;
   }
-
-  /* MENU */
 
   .menuLink {
     justify-content: center;
-
-    padding: 15px 10px;
   }
 
-  .menuLink .spanMenu {
-    position: absolute;
-
-    left: 78px;
-    top: 50%;
-
-    transform: translateY(-50%);
-
-    background: #151515;
-    color: #fff;
-
-    padding: 8px 12px;
-
-    border-radius: 10px;
-
-    white-space: nowrap;
-
-    opacity: 0;
-    visibility: hidden;
-
-    pointer-events: none;
-
-    z-index: 999;
-
-    font-size: 14px;
-
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  }
-
-  .menuLink:hover .spanMenu {
-    opacity: 1;
-    visibility: visible;
-  }
-
-  /* HEADER */
-
-  .header {
-    padding: 10px 15px;
-  }
-
-  /* MAIN */
-
-  .main {
-    padding: 10px;
-  }
-
-  .subMain {
-    padding: 15px;
-
-    border-radius: 20px;
+  .spanMenu {
+    display: none;
   }
 }
 
-/* =========================
+/* =========================================
    MOBILE
-========================= */
+========================================= */
 
 @media (max-width: 768px) {
   body {
     grid-template-columns: 1fr;
-    grid-template-rows: 60px 1fr;
 
     grid-template-areas:
       "header"
@@ -461,67 +389,33 @@ body {
   .sidebar {
     position: fixed;
 
-    left: -260px;
+    left: -270px;
     top: 0;
 
-    width: 260px;
-
-    z-index: 1000;
+    width: 270px;
+    height: 100vh;
 
     transition: 0.3s ease;
-
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
   }
 
   .sidebar.active {
     left: 0;
   }
 
-  /* LOGO */
-
-  .logoSidebar {
-    justify-content: flex-start;
-
-    padding: 20px;
-  }
-
   .logoSidebar h2 {
     display: block;
   }
-
-  .logoSidebar .bi {
-    background: #33ed0017;
-  }
-
-  /* MENU */
 
   .menuLink {
     justify-content: flex-start;
   }
 
-  .menuLink .spanMenu {
-    position: static;
-
-    opacity: 1;
-    visibility: visible;
-
-    transform: none;
-
-    background: transparent;
-    color: inherit;
-
-    padding: 0;
-
-    box-shadow: none;
+  .spanMenu {
+    display: block;
   }
 
-  /* MAIN */
-
-  .main {
-    padding: 10px;
-  }
-
-  .subMain {
-    border-radius: 15px;
-  }
+  /* .subMain {
+    border-radius: 22px;
+    padding: 18px;
+  } */
 }
