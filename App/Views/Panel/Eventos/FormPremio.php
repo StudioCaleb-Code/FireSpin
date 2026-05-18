@@ -2,49 +2,51 @@
 
 <section class="seccionEvn">
     <div class="formCard">
-        <h2>REGISTRAR UN NUEVO EVENTO</h2>
+        <h2>REGISTRAR PREMIO PARA EL EVENTO ( NOMBRE DEL EVENTO )</h2>
         <hr class="hr-newEvento">
 
         <form action="#" class="form-evento">
-            <label class="subTitulo">Nombres y descripcion</label>
+            <label class="subTitulo">Nombres - Descripcion - Cantidad</label>
             <div class="container-group">
                 <!-- nombre -->
                 <div class="input-group">
                     <!-- <label for="nobre_evento">Nombre</label> -->
                     <i class="bi bi-box"></i>
-                    <input type="text" name="nombreEnveto" id="nombreEvento" placeholder="Nombre" required>
+                    <input type="text" name="nombrePremio" id="nombrePremio" placeholder="Nombre" required>
                 </div>
 
                 <!-- Descripcion -->
                 <div class="input-group">
                     <!-- <label for="nobre_evento">Descripcion</label> -->
                     <i class="bi bi-chat-left-text"></i>
-                    <textarea name="descripcionEvento" id="descripcionEvento" placeholder="Descripcion"></textarea>
+                    <textarea name="descripcionPremio" id="descripcionPremio" placeholder="Descripcion"></textarea>
+                </div>
+
+                <div class="input-group">
+                    <!-- <label for="nobre_evento">Descripcion</label> -->
+                    <i class="bi bi-boxes"></i>
+                    <input type="number" name="cantidadPremio" id="cantidadPremio"
+                        placeholder="Cantidad disponible"></input>
                 </div>
             </div>
 
-            <label class="subTitulo">Fecha y hora</label>
-            <div class="container-group">
-                <!-- fecha inicio -->
-                <div class="input-group">
-                    <i class="bi bi-box"></i>
-                    <input type="date" name="fechaInitEvento" id="fechaInitEvento" required>
-                </div>
-
-                <!-- fecha fin -->
-                <div class="input-group">
-                    <i class="bi bi-box"></i>
-                    <input type="date" name="fechaEndEvento" id="fechaEndEvento" required>
-                </div>
-            </div>
-
-            <label class="subTitulo">Portada del evento</label>
+            <label class="subTitulo">Portada del premio</label>
             <div class="container-group">
                 <!-- Foto del evento -->
                 <div class="input-group">
                     <!-- <label for="nobre_evento">Nombre</label> -->
                     <i class="bi bi-image"></i>
-                    <input type="file" name="fotoEnveto" id="fotoEnveto" required>
+                    <input type="file" name="fotoPremio" id="fotoPremio" required>
+                </div>
+            </div>
+
+            <label class="subTitulo">Fotos referenciales</label>
+            <div class="container-group">
+                <!-- Foto del evento -->
+                <div class="input-group">
+                    <!-- <label for="nobre_evento">Nombre</label> -->
+                    <i class="bi bi-image"></i>
+                    <input type="file" name="fotoPremio" id="fotoPremio" required>
                 </div>
             </div>
         </form>
@@ -52,13 +54,14 @@
         <br>
         <!-- <hr class="hr-newEvento"> -->
         <div class="btn-formEvento">
-            <a href="<?= BASE_URL ?>/Panel/Eventos/">
+            <a href="<?= BASE_URL ?>/Panel/Eventos/formEvento">
                 <i class="bi bi-arrow-left"></i>
                 Cancelar
             </a>
-            <a href="<?= BASE_URL ?>/Panel/Eventos/formEventoPremio"" class=" guardarContinuar">Guardar y continuar</a>
+            <a href="<?= BASE_URL ?>/Panel/Eventos/formEventoPremi"" class=" guardarContinuar">Guardar y continuar</a>
         </div>
     </div>
 </section>
+
 
 <script src="fromEvento.js"></script>

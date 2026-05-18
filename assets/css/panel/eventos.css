@@ -1,57 +1,8 @@
-.navEvento {
-  width: 100%;
-
-  background: #ffffff;
-
-  padding: 14px 18px;
-
-  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
-
-.menuEvn {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-
-  flex-wrap: wrap;
-}
-
-.listaEvn {
-  list-style: none;
-}
-
-.linkEnv {
-  text-decoration: none;
-
-  color: #4b4b4b;
-
-  padding: 12px 18px;
-  border-radius: 14px;
-
-  display: flex;
-  align-items: center;
-  gap: 10px;
-
-  font-size: 15px;
-  font-weight: 600;
-
-  transition: 0.3s ease;
-}
-
-.linkEnv i {
-  font-size: 18px;
-}
-
-.linkEnv:hover {
-  background: #99da1e;
-  color: #416400;
-}
-
 /* ========================================
    CONTENEDOR
 ======================================== */
 
-.seccionEvn {
+/* .seccionEvn {
   width: 100%;
 
   background: #ffffff;
@@ -64,7 +15,7 @@
   gap: 20px;
 
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
-}
+} */
 
 /* ========================================
    LINK CARD
@@ -142,14 +93,14 @@
   justify-content: center;
   transition: ease 0.5s;
 }
+  
+  .ruleta {
+    padding: 10px;
+    border: 2px solid #fff;
+    color: #fff;
 
-.ruleta {
-  padding: 10px;
-  border: 2px solid #fff;
-  color: #fff;
-
-  text-decoration: none;
-}
+    text-decoration: none;
+  }
 
 /* ========================================
    TEXTO

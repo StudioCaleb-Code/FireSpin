@@ -1,0 +1,34 @@
+.navegador {
+  border: 1px solid #e5e5e5;
+  box-shadow: none !important;
+}
+
+/* tabla */
+.tablaEvento {
+  border-collapse: collapse;
+  width: 100%;
+}
+.tablaEvento th {
+  background: #000;
+  color: #fff;
+  padding: 20px;
+}
+
+.tablaEvento td {
+  background: #f4f4f4;
+  color: #000000;
+  padding: 20px;
+}
+
+.tdFoto {
+  object-fit: fill;
+  /* width: 100%; */
+}
+
+.tdFoto img {
+  width: 50px;
+  height: 50px;
+}
+.btnAccionEvn {
+  border: none;
+}

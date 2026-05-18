@@ -30,7 +30,7 @@ class Config
 
         // --- DEFINICIÓN DE RUTAS URL (Para el Navegador: href, src, action) ---
         if (!defined('BASE_URL')) {
-            define('BASE_URL', rtrim(self::get('APP_URL', 'http://localhost/EMPRENDEMAS'), '/') . '/');
+            define('BASE_URL', rtrim(self::get('APP_URL', 'http://192.168.1.68/EMPRENDEMAS'), '/') . '/');
         }
 
         // Rutas directas para Assets (CSS, JS, IMG)

@@ -1,0 +1,51 @@
+.navegador {
+  width: 100%;
+
+  background: #ffffff;
+
+  padding: 14px 18px;
+
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+}
+
+.menuNav {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+
+  flex-wrap: wrap;
+}
+
+.listaNav {
+  list-style: none;
+}
+
+.linkNav {
+  text-decoration: none;
+
+  color: #4b4b4b;
+
+  padding: 12px 18px;
+  /* border-radius: 14px; */
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  transition: 0.3s ease;
+  border-bottom: 3px solid #ffffff;
+}
+
+.linkNav i {
+  font-size: 18px;
+}
+
+.linkNav:hover {
+  border-bottom: 3px solid #000;
+}
+.linkNav.active {
+  border-bottom: 3px solid #000;
+}

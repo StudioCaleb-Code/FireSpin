@@ -9,8 +9,14 @@ class UsuariosController extends PanelController
     public function index()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'extra_css' => ['panel/usuarios'],
-            'extra_js' => ['panel/usuarios'],
+            'extra_css' => [
+                'panel/usuarios',
+                'panel/navegador'
+                ],
+            'extra_js' => [
+                'panel/usuarios',
+                'panel/navActive'
+                ],
             'view_tab' => 'TablaUsuario', // Carga TablaUsuario.php
             'usuarios' => [] // Aquí mandarías los datos de la DB
         ]);
@@ -22,8 +28,14 @@ class UsuariosController extends PanelController
     public function ganadores()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'extra_css' => ['panel/usuarios'],
-            'extra_js' => ['panel/usuarios'],
+            'extra_css' => [
+                'panel/usuarios',
+                'panel/navegador'
+                ],
+            'extra_js' => [
+                'panel/usuarios',
+                'panel/navActive'
+                ],
             'view_tab' => 'TablaGanadores', // Carga TablaGanadores.php
             'usuarios' => []
         ]);
@@ -35,22 +47,34 @@ class UsuariosController extends PanelController
     public function listaNegra()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'extra_css' => ['panel/usuarios'],
-            'extra_js' => ['panel/usuarios'],
-            'view_tab' => 'TablaListaNegra', // Carga TablaListaNegra.php
+            'extra_css' => [
+                'panel/usuarios',
+                'panel/navegador'
+                ],
+            'extra_js' => [
+                'panel/usuarios',
+                'panel/navActive'
+                ],
+            'view_tab' => 'TablaListaNegra',
             'usuarios' => []
         ]);
     }
 
     /**
-     * 4. Pestaña: Administrativos (Usuarios del sistema)
+     * 4. Pestaña: para registrar nuevo participante
      */
-    public function administrativos()
+    public function formNuevo()
     {
         $this->renderPanel('Panel/Usuario/index', [
-            'extra_css' => ['panel/usuarios'],
-            'extra_js' => ['panel/usuarios'],
-            'view_tab' => 'TablaAdministrativos', // Carga TablaAdministrativos.php
+            'extra_css' => [
+                'panel/usuarios',
+                'panel/navegador'
+                ],
+            'extra_js' => [
+                'panel/usuarios',
+                'panel/navActive'
+                ],
+            'view_tab' => 'FormNuevo', // Carga TablaAdministrativos.php
             'usuarios' => []
         ]);
     }

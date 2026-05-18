@@ -36,6 +36,12 @@
             </a>
         </li>
         <li class="listaMenu">
+            <a href="<?= BASE_URL ?>/Panel/Pages" class="menuLink">
+                <i class="bi bi-gear"></i>
+                <span class="spanMenu">Administrar</span>
+            </a>
+        </li>
+        <li class="listaMenu">
             <!-- Este abre tu página principal en otra pestaña -->
             <a href="<?= BASE_URL ?>" target="_blank" class="menuLink">
                 <i class="bi bi-browser-chrome"></i>

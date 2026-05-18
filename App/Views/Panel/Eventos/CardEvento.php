@@ -7,7 +7,7 @@
         <div class="fotoEvn">
             <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRp08sOu4--AZmjGcn_WomVBw2nRed386o4cQ&s"
                 alt="Foto del evento">
-                        <!-- solo aparece al hover -->
+            <!-- solo aparece al hover -->
             <div class="btnEntrarRuleta">
                 <samp class="ruleta">Empezar</samp>
                 <!-- <a href="#rulea" class="ruleta">Empezar</a> -->

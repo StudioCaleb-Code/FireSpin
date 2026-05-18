@@ -282,6 +282,8 @@ CREATE TABLE registro_evento (
     ON UPDATE CASCADE,
 
 -- evita duplicarse en el MISMO evento
+
+
 UNIQUE KEY uk_evento_participante (id_evento, id_participante)
 
 ) ENGINE=InnoDB;

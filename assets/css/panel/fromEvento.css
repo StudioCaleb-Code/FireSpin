@@ -1,0 +1,172 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+
+  font-family: "Quicksand", sans-serif;
+  font-optical-sizing: auto;
+  font-style: normal;
+}
+
+:root {
+  --color-borde: #e5e5e5;
+}
+
+.formCard {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  background: transparent;
+}
+
+/* TITULO */
+.formCard h2 {
+  color: #2f2f2f;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+/* LINEA */
+.hr-newEvento {
+  height: 1px;
+  width: 100%;
+  border: none;
+  background: var(--color-borde);
+}
+
+/* FORMULARIO */
+.form-evento {
+  width: 100%;
+
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+
+  gap: 20px;
+}
+
+/* SUB TITULOS */
+.form-evento .subTitulo {
+  text-align: start;
+  color: #4e4e4e;
+  font-size: 13px;
+  font-weight: 600;
+}
+
+/* CONTENEDOR */
+.container-group {
+  width: 100%;
+
+  display: flex;
+  gap: 20px;
+}
+
+/* INPUT GROUP */
+.input-group {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  background: #fff;
+  border: 1px solid var(--color-borde);
+  border-radius: 8px;
+
+  padding: 0 12px;
+
+  transition: 0.2s ease;
+}
+
+/* HOVER */
+.input-group:hover {
+  border-color: #cfcfcf;
+}
+
+/* FOCUS */
+.input-group:focus-within {
+  border-color: #7c7c7c;
+}
+
+/* ICONOS */
+.input-group i {
+  color: #7a7a7a;
+  font-size: 16px;
+}
+
+/* INPUTS */
+.input-group input,
+.input-group textarea {
+  width: 100%;
+
+  border: none;
+  outline: none;
+  background: transparent;
+
+  font-size: 14px;
+  color: #333;
+}
+
+/* INPUT */
+.input-group input {
+  padding: 15px 0;
+}
+
+/* TEXTAREA */
+.input-group textarea {
+  height: 50px;
+  min-height: 50px;
+  max-height: 50px;
+
+  padding: 15px 0;
+
+  resize: none;
+}
+
+/* PLACEHOLDER */
+.input-group input::placeholder,
+.input-group textarea::placeholder {
+  color: #9a9a9a;
+}
+
+/* botones del formulario */
+.btn-formEvento {
+  width: 100%;
+  display: flex;
+  /* align-items: center; */
+  justify-content: flex-end;
+  gap: 20px;
+}
+
+.btn-formEvento button {
+  background: transparent;
+  padding: 10px;
+  border: none;
+  color: #000000;
+}
+
+.btn-formEvento a {
+  text-decoration: none;
+  background: transparent;
+  padding: 10px;
+  border: 1px solid #000;
+  color: #000000;
+}
+
+/* FILE */
+.input-group input[type="file"] {
+  cursor: pointer;
+  /* height: 300px; */
+  padding: 30px;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .container-group {
+    flex-direction: column;
+  }
+}

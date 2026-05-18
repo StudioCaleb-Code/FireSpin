@@ -1,23 +1,23 @@
-<nav class="navEvento">
-    <ul class="menuEvn">
-        <li class="listaEvn">
-            <a href="<?= BASE_URL ?>/Panel/Eventos" class="linkEnv">
+<nav class="navegador">
+    <ul class="menuNav">
+        <li class="listaNav">
+            <a href="<?= BASE_URL ?>/Panel/Eventos" class="linkNav">
                 <i class="bi bi-box"></i>
                 <span>Eventos</span>
             </a>
         </li>
 
-        <li class="listaEvn">
-            <a href="<?= BASE_URL ?>/Panel/Eventos/formEvento" class="linkEnv">
+        <li class="listaNav">
+            <a href="<?= BASE_URL ?>/Panel/Eventos/formEvento" class="linkNav">
                 <i class="bi bi-plus-lg"></i>
                 <span>Nuevo evento</span>
             </a>
         </li>
 
-        <li class="listaEvn">
-            <a href="<?= BASE_URL ?>/Panel/Ruleta" class="linkEnv" target="_blank">
-                <i class="bi bi-asterisk"></i>
-                <span>Ir a ruleta</span>
+        <li class="listaNav">
+            <a href="<?= BASE_URL ?>/Panel/Eventos/SelecEvento" class="linkNav">
+                <i class="bi bi-check"></i>
+                <span>Seleccionar</span>
             </a>
         </li>
     </ul>
