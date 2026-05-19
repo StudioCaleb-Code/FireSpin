@@ -1,4 +1,20 @@
-RewriteEngine On
-RewriteCond %{REQUEST_FILENAME} !-f
-RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L] 
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    
+    # 1. SEGURIDAD: Bloquear acceso directo a archivos y carpetas críticas
+    # Evita que descarguen el archivo .env, configuraciones de Git o el propio htaccess
+    RedirectMatch 403 /\.(env|git|htaccess)$
+    
+    # Evita que entren navegando a la carpeta de la lógica de tu aplicación
+    RewriteRule ^app(/|$) - [F,L]
+
+    # 2. ENRUTAMIENTO: Si el archivo o carpeta física existe en assets/ o uploads/, se sirve directamente
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    
+    # Si no existe, todo se envía al index.php pasándole la ruta limpia por GET
+    RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+</IfModule>
+
+# Desactivar el listado de directorios (evita que vean tus carpetas si no hay un index)
+Options -Indexes

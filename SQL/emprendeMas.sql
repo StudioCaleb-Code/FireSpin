@@ -181,4 +181,3 @@ CREATE TABLE ganadores (
     CONSTRAINT fk_gan_participante FOREIGN KEY (id_participante) REFERENCES participantes (id_participante) ON UPDATE CASCADE,
     CONSTRAINT fk_gan_premio FOREIGN KEY (id_premio) REFERENCES premios (id_premio) ON UPDATE CASCADE
 ) ENGINE = InnoDB;
-
